@@ -1,0 +1,8 @@
+<div class="categories-container">
+  @for (category of categories; track $index; let i = $index) {
+    <div class="category">
+      <img [src]="category.image" alt="Category {{ i + 1 }}" />
+      <p class="name">{{ category.categoryName }}</p>
+    </div>
+  }
+</div>
