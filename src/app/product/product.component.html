@@ -1,10 +1,29 @@
+<h2>Top Jewelery</h2>
 <div class="products-container">
-  @for (product of products; track $index; let i = $index) {
+  @for (product of products; track product.id) {
+    @if (product.category === 'jewelery') {
+      <div class="product">
+        <img [src]="product.image" alt="{{ product.title }}" width="200" />
+        <h3>{{ product.title }}</h3>
+        <p>{{ product.description }}</p>
+        <strong>Price: ${{ product.price }}</strong>
+        <p>Rating: {{ product.rating.rate }} ({{ product.rating.count }} reviews)</p>
+      </div>
+    }
+  }
+</div>
+
+<h2>All Products</h2>
+<div class="products-container">
+  @for (product of products; track product.id) {
     <div class="product">
-      <img [src]="product.image" alt="Product {{ i + 1 }}" />
-      <p class="name">{{ product.productName }}</p>
-      <p class="price">{{ product.productPrice }}</p>
-      <p class="sale">{{ product.onSale ? 'On Sale!' : '' }}</p>
+      <img [src]="product.image" alt="{{ product.title }}" width="200" />
+      <h3>{{ product.title }}</h3>
+      <p>{{ product.description }}</p>
+      <p>Category: {{ product.category }}</p>
+      <strong>Price: ${{ product.price }}</strong>
+      <p>Rating: {{ product.rating.rate }} ({{ product.rating.count }} reviews)</p>
     </div>
   }
 </div>
+
